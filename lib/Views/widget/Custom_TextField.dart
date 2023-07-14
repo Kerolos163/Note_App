@@ -5,16 +5,17 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import '../../constant.dart';
 
 class CustomTextField extends StatelessWidget {
-  const CustomTextField({super.key});
-
+  const CustomTextField({super.key, required this.hint, this.maxline = 1});
+  final String hint;
+  final int maxline;
   @override
   Widget build(BuildContext context) {
     return TextField(
       cursorColor: p_color,
-      
+      maxLines: maxline,
       decoration: InputDecoration(
-        hintText: "Title",
-        hintStyle: TextStyle(color: p_color),
+          hintText: hint,
+          hintStyle: TextStyle(color: p_color),
           border: BuildBorder(),
           enabledBorder: BuildBorder(),
           focusedBorder: BuildBorder(p_color)),
