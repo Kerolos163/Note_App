@@ -3,20 +3,27 @@ import 'package:flutter/material.dart';
 import 'Custom_IconSearch.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key});
-
+  const CustomAppBar({
+    super.key,
+    this.title = "Notes",
+    this.icon = Icons.search,
+  });
+  final String title;
+  final IconData icon;
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 50,bottom: 10),
+      padding: const EdgeInsets.only(top: 50, bottom: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: const [
+        children: [
           Text(
-            "Notes",
-            style: TextStyle(fontSize: 30),
+            title,
+            style: const TextStyle(fontSize: 30),
           ),
-          Custom_SearchIcon()
+          Custom_SearchIcon(
+            icon: icon,
+          )
         ],
       ),
     );
