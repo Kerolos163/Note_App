@@ -11,8 +11,8 @@ import 'constant.dart';
 void main() async {
   Bloc.observer = simpleblocobserver();
   await Hive.initFlutter();
-  await Hive.openBox(kNoteBox);
   Hive.registerAdapter(NoteModelAdapter());
+  await Hive.openBox<NoteModel>(kNoteBox);
   runApp(const Notes_App());
 }
 
@@ -21,20 +21,13 @@ class Notes_App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => AddNoteAppCubit(),
-        )
-      ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-            brightness: Brightness.dark,
-            scaffoldBackgroundColor: Colors.black,
-            fontFamily: "Poppins"),
-        home: const Notes_View(),
-      ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+          brightness: Brightness.dark,
+          scaffoldBackgroundColor: Colors.black,
+          fontFamily: "Poppins"),
+      home: const Notes_View(),
     );
   }
 }

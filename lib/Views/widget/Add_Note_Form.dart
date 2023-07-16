@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:note_app/Add_Note_Cubit/Cubit.dart';
 
+import '../../models/note_model.dart';
 import 'Custom_Button.dart';
 import 'Custom_TextField.dart';
+
 class AddNoteForm extends StatefulWidget {
   const AddNoteForm({
     super.key,
@@ -48,6 +51,12 @@ class _AddNoteFormState extends State<AddNoteForm> {
             ontap: () {
               if (formKey.currentState!.validate()) {
                 formKey.currentState!.save();
+                var notemodel = NoteModel(
+                    title: Title!,
+                    subTitle: Subtitle!,
+                    date: DateTime.now().toString(),
+                    color: Colors.amber.value);
+                AddNoteAppCubit.get(context).AddNote(notemodel);
               } else {
                 autovalidateMode = AutovalidateMode.always;
                 setState(() {});
