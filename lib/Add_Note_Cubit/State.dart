@@ -11,3 +11,4 @@ class AddNoteAppFailure extends AddNoteAppState {
 
   AddNoteAppFailure(this.error);
 }
+
