@@ -3,6 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:note_app/Views/Edit_Note_View.dart';
 import 'package:note_app/models/note_model.dart';
 
+import '../../Cubit/Notes_Cubit/Cubit.dart';
+
 class NoteCard extends StatelessWidget {
   const NoteCard({super.key, required this.note});
   final NoteModel note;
@@ -38,6 +40,7 @@ class NoteCard extends StatelessWidget {
                   onPressed: () {
                     print("Delete");
                     note.delete();
+                    NoteCubit.get(context).fetchallnotes();
                   },
                   icon: const Icon(
                     FontAwesomeIcons.trash,
