@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:note_app/models/note_model.dart';
 
-import '../constant.dart';
+import '../../constant.dart';
 import 'State.dart';
 
 class AddNoteAppCubit extends Cubit<AddNoteAppState> {
