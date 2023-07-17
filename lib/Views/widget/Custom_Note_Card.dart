@@ -36,7 +36,8 @@ class NoteCard extends StatelessWidget {
               ),
               trailing: IconButton(
                   onPressed: () {
-                    print("WESSSSSSSSSSSSSO");
+                    print("Delete");
+                    note.delete();
                   },
                   icon: const Icon(
                     FontAwesomeIcons.trash,
