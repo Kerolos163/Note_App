@@ -18,7 +18,8 @@ class ListViewCArd extends StatelessWidget {
             physics: const AlwaysScrollableScrollPhysics(
                 parent: BouncingScrollPhysics()),
             shrinkWrap: true,
-            itemBuilder: (context, index) => const NoteCard(),
+            itemBuilder: (context, index) =>
+                NoteCard(note: NoteCubit.get(context).Notes![index]),
             separatorBuilder: (context, index) => const SizedBox(
               height: 8,
             ),
