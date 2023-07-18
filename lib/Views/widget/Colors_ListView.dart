@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../Cubit/Add_Note_Cubit/Cubit.dart';
 import '../../constant.dart';
 
 class ColorItem extends StatelessWidget {
@@ -54,6 +55,7 @@ class _ColorListViewState extends State<ColorListView> {
           child: GestureDetector(
               onTap: () {
                 currentindex = index;
+                AddNoteAppCubit.get(context).color=colors[index];
                 setState(() {});
               },
               child: ColorItem(

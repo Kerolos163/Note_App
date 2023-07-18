@@ -10,7 +10,9 @@ import 'State.dart';
 class AddNoteAppCubit extends Cubit<AddNoteAppState> {
   AddNoteAppCubit() : super(InitAddNoteAppState());
   static AddNoteAppCubit get(context) => BlocProvider.of(context);
+  Color color=const Color(0xffD8DCFF);
   AddNote(NoteModel Note) async {
+    Note.color=color.value;
     emit(AddNoteAppLoading());
     try {
       var notesbox = Hive.box<NoteModel>(kNoteBox);
