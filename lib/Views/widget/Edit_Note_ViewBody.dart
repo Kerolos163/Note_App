@@ -4,6 +4,9 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:note_app/Cubit/Notes_Cubit/Cubit.dart';
 import 'package:note_app/models/note_model.dart';
 
+import '../../constant.dart';
+import 'ColorsNote_ColorListView.dart';
+import 'Colors_ListView.dart';
 import 'Custom_AppBar.dart';
 import 'Custom_TextField.dart';
 
@@ -53,8 +56,16 @@ class _Edit_Node_View_BodyState extends State<Edit_Node_View_Body> {
             hint: widget.note.subTitle,
             maxline: 5,
           ),
+          const SizedBox(
+            height: 24,
+          ),
+          EditNote_ColorList(
+            note: widget.note,
+          )
         ],
       ),
     );
   }
 }
+
+

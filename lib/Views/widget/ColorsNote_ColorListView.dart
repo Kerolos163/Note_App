@@ -1,39 +1,23 @@
 import 'package:flutter/material.dart';
 
-import '../../Cubit/Add_Note_Cubit/Cubit.dart';
 import '../../constant.dart';
+import '../../models/note_model.dart';
+import 'Colors_ListView.dart';
 
-class ColorItem extends StatelessWidget {
-  const ColorItem({super.key, this.IsActive = false, required this.color});
-  final bool IsActive;
-  final Color color;
+class EditNote_ColorList extends StatefulWidget {
+  const EditNote_ColorList({super.key, required this.note});
+  final NoteModel note;
   @override
-  Widget build(BuildContext context) {
-    return IsActive
-        ? CircleAvatar(
-            radius: 38,
-            backgroundColor: Colors.white,
-            child: CircleAvatar(
-              radius: 32,
-              backgroundColor: color,
-            ),
-          )
-        : CircleAvatar(
-            radius: 38,
-            backgroundColor: color,
-          );
+  State<EditNote_ColorList> createState() => _EditNote_ColorListState();
+}
+
+class _EditNote_ColorListState extends State<EditNote_ColorList> {
+  late int currentindex;
+  @override
+  void initState() {
+    currentindex = colors.indexOf(Color(widget.note.color));
+    super.initState();
   }
-}
-
-class ColorListView extends StatefulWidget {
-  const ColorListView({super.key});
-
-  @override
-  State<ColorListView> createState() => _ColorListViewState();
-}
-
-class _ColorListViewState extends State<ColorListView> {
-  int currentindex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +33,7 @@ class _ColorListViewState extends State<ColorListView> {
           child: GestureDetector(
               onTap: () {
                 currentindex = index;
-                AddNoteAppCubit.get(context).color = colors[index];
+                widget.note.color = colors[index].value;
                 setState(() {});
               },
               child: ColorItem(

@@ -22,6 +22,8 @@ class AddNote extends StatelessWidget {
           if (state is AddNoteAppSuccess) {
             Navigator.pop(context);
             NoteCubit.get(context).fetchallnotes();
+                        ScaffoldMessenger.of(context)
+                .showSnackBar(const SnackBar(content: Text("Added Note Done")));
           } else if (state is AddNoteAppFailure) {
             ScaffoldMessenger.of(context)
                 .showSnackBar(SnackBar(content: Text(state.error)));
