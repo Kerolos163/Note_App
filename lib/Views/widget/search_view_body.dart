@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:note_app/Views/widget/Custom_TextField.dart';
+import 'package:note_app/models/note_model.dart';
 
 import '../../Cubit/Notes_Cubit/Cubit.dart';
 import '../../Cubit/Notes_Cubit/State.dart';
+import 'Custom_Note_Card.dart';
 
 class search_View_Body extends StatelessWidget {
   const search_View_Body({super.key});
@@ -14,23 +15,55 @@ class search_View_Body extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<NoteCubit, NoteState>(
       builder: (context, state) {
-        print(NoteCubit.get(context).Notes![0].title);
         return Padding(
           padding:
               const EdgeInsets.only(top: 70, bottom: 10, right: 20, left: 20),
           child: Column(
             children: [
               CustomTextField(
-                hint: "Search",
+                hint: "Enter Text...",
                 label: "Search",
                 onChanged: (value) {
-                  
+                  NoteCubit.get(context).SearchNoteFormAllNote(Str: value);
+                  if (value.isEmpty) {
+                    NoteCubit.get(context).SearchNoteFormAllNote(Str: null);
+                  }
                 },
-              )
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              if (state is SearchLoading) const LinearProgressIndicator(),
+              const SizedBox(
+                height: 10,
+              ),
+              Search_ListView()
             ],
           ),
         );
       },
+    );
+  }
+}
+
+class Search_ListView extends StatelessWidget {
+  const Search_ListView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: ListView.separated(
+        padding: EdgeInsets.zero,
+        physics: const AlwaysScrollableScrollPhysics(
+            parent: BouncingScrollPhysics()),
+        shrinkWrap: true,
+        itemBuilder: (context, index) =>
+            NoteCard(note: NoteCubit.get(context).Search_Notes[index]),
+        separatorBuilder: (context, index) => const SizedBox(
+          height: 8,
+        ),
+        itemCount: NoteCubit.get(context).Search_Notes.length,
+      ),
     );
   }
 }
