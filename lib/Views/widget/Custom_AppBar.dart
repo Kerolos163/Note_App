@@ -26,11 +26,7 @@ class CustomAppBar extends StatelessWidget {
           ),
           Custom_SearchIcon(
             icon: icon,
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const search_View(),
-              ));
-            },
+            onPressed: onPressed,
           )
         ],
       ),
