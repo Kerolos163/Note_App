@@ -5,13 +5,15 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import '../../constant.dart';
 
 class CustomTextField extends StatelessWidget {
-  const CustomTextField({super.key, required this.hint, this.maxline = 1, this.onsaved});
+  const CustomTextField({super.key, required this.hint, this.maxline = 1, this.onsaved, this.onChanged});
   final String hint;
   final int maxline;
   final void Function(String?)? onsaved;
+  final void Function(String)? onChanged;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged: onChanged,
       onSaved: onsaved,
       validator: (value) {
         if(value?.isEmpty ?? true)

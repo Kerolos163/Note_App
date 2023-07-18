@@ -13,7 +13,7 @@ class NoteCard extends StatelessWidget {
     return InkWell(
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => const Edit_Note_View(),
+          builder: (context) => Edit_Note_View(note: note),
         ));
       },
       child: Container(

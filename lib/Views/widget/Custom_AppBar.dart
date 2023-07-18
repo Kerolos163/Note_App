@@ -6,10 +6,11 @@ class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
     super.key,
     this.title = "Notes",
-    this.icon = Icons.search,
+    this.icon = Icons.search, this.onPressed,
   });
   final String title;
   final IconData icon;
+  final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -23,6 +24,7 @@ class CustomAppBar extends StatelessWidget {
           ),
           Custom_SearchIcon(
             icon: icon,
+            onPressed: onPressed,
           )
         ],
       ),
