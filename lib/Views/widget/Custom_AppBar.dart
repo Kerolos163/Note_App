@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
+import '../Search_View.dart';
 import 'Custom_IconSearch.dart';
 
 class CustomAppBar extends StatelessWidget {
   const CustomAppBar({
     super.key,
     this.title = "Notes",
-    this.icon = Icons.search, this.onPressed,
+    this.icon = Icons.search,
+    this.onPressed,
   });
   final String title;
   final IconData icon;
@@ -24,7 +26,11 @@ class CustomAppBar extends StatelessWidget {
           ),
           Custom_SearchIcon(
             icon: icon,
-            onPressed: onPressed,
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const search_View(),
+              ));
+            },
           )
         ],
       ),
