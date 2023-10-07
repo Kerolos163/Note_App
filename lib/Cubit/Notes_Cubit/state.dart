@@ -1,5 +1,3 @@
-import '../../models/note_model.dart';
-
 abstract class NoteState {}
 
 class InitNoteState extends NoteState {}
