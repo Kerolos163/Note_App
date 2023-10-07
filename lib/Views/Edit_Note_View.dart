@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:note_app/Views/widget/Edit_Note_ViewBody.dart';
+
+import 'widget/Edit_Note_ViewBody.dart';
 
 import '../models/note_model.dart';
 

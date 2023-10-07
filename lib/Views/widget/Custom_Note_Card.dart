@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:note_app/Views/Edit_Note_View.dart';
-import 'package:note_app/models/note_model.dart';
 
 import '../../Cubit/Notes_Cubit/Cubit.dart';
+import '../../models/note_model.dart';
+import '../Edit_Note_View.dart';
 
 class NoteCard extends StatelessWidget {
   const NoteCard({super.key, required this.note});

@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:note_app/Views/widget/Custom_TextField.dart';
-import 'package:note_app/models/note_model.dart';
 
 import '../../Cubit/Notes_Cubit/Cubit.dart';
 import '../../Cubit/Notes_Cubit/State.dart';
-import 'Custom_Note_Card.dart';
+import 'Custom_TextField.dart';
 import 'Search_ListView.dart';
 
 class search_View_Body extends StatelessWidget {
